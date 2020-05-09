@@ -3,8 +3,8 @@
 #include <SPI.h>
 #include <TMRpcm.h>
 
-const int SD_ChipSelectPin = 53;  // yellow
-const int speakerPin = 46;        // brown
+const int SD_ChipSelectPin = 53;  // yellow, need to change
+const int speakerPin = 46;        // brown, need to change
 
 TMRpcm audio;
 

@@ -7,8 +7,9 @@ const int SD_ChipSelectPin = 10;
 const int speakerPin = 9;
 const int receiverPin = 3;
 const int LED = 7;
+int audioFile = 0;
 
-TMRpcm audio;     
+TMRpcm audio;
 
 void setup() {
   Serial.begin(9600);
@@ -26,10 +27,21 @@ void setup() {
 }
 
 void loop() {
-  if ( digitalRead(receiverPin) == HIGH) {
-    audio.play("APHrob.wav");
+  if (digitalRead(receiverPin) == HIGH) {
+    if (audioFile == 0) {
+      audio.play("APHrob.wav");
+      audioFile++;
+      Serial.println("speech 1");
+    } else if (audioFile == 1) {
+      audio.play("rob2.wav");
+      audioFile++;
+      Serial.println("speech 2");
+    }
     digitalWrite(LED, HIGH);
     delay(10000);
     digitalWrite(LED, LOW);
-  } 
+    if (audioFile >= 2) {
+      audioFile = 0;
+    }
+  }
 }

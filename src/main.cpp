@@ -9,6 +9,10 @@ const int receiverPin = 3;
 const int LED = 7;
 int audioFile = 0;
 
+char file0[] = "APHrob.wav";
+char file1[] = "rob2.wav";
+char* files[] = {file0, file1};
+
 TMRpcm audio;
 
 void setup() {
@@ -28,20 +32,10 @@ void setup() {
 
 void loop() {
   if (digitalRead(receiverPin) == HIGH) {
-    if (audioFile == 0) {
-      audio.play("APHrob.wav");
-      audioFile++;
-      Serial.println("speech 1");
-    } else if (audioFile == 1) {
-      audio.play("rob2.wav");
-      audioFile++;
-      Serial.println("speech 2");
-    }
+    audio.play(files[audioFile % 2]);
+    audioFile++;
     digitalWrite(LED, HIGH);
     delay(10000);
     digitalWrite(LED, LOW);
-    if (audioFile >= 2) {
-      audioFile = 0;
-    }
   }
 }

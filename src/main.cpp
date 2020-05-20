@@ -11,7 +11,8 @@ int audioFile = 0;
 
 char file0[] = "APHrob.wav";
 char file1[] = "rob2.wav";
-char* files[] = {file0, file1};
+char file2[] = "rob3.wav";
+char* files[] = {file0, file1,file2};
 
 TMRpcm audio;
 
@@ -32,7 +33,7 @@ void setup() {
 
 void loop() {
   if (digitalRead(receiverPin) == HIGH) {
-    audio.play(files[audioFile % 2]);
+    audio.play(files[audioFile % 3]);
     audioFile++;
     digitalWrite(LED, HIGH);
     delay(10000);

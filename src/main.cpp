@@ -1,3 +1,8 @@
+// This file conrols Rob's voice
+// Use https://ttsmp3.com/ to record a message and download as mp3
+// then use https://audio.online-convert.com/convert-to-wav to convert to wav
+// using 8-bit, 16000 Hz, mono, PCM unsigned 8-bit settings
+
 #include <Arduino.h>
 #include <SD.h>
 #include <SPI.h>
